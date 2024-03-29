@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Value Key</title>
+    <script>
+        function jsonValueKey(jsonString, key) {
+            const jsonObject = JSON.parse(jsonString);
+            if (jsonObject.hasOwnProperty(key)) {
+                return jsonObject[key];
+            } else {
+                return "Clé non trouvée";
+            }
+        }
+
+        function getValue() {
+            const jsonString = document.getElementById("jsonString").value;
+            const key = document.getElementById("key").value;
+            const result = jsonValueKey(jsonString, key);
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>JSON Value Key</h1>
+    <form onsubmit="event.preventDefault(); getValue();">
+        <label for="jsonString">Chaîne JSON :</label><br>
+        <textarea id="jsonString" rows="4" cols="50"></textarea><br>
+        <label for="key">Clé :</label><br>
+        <input type="text" id="key"><br>
+        <button type="submit">Obtenir la valeur</button>
+    </form>
+    <div id="result"></div>
+</body>
+</html>
